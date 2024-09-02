@@ -1,0 +1,26 @@
+ 
+# Query 1: Number of Artists
+query {
+  Artist {
+    aggregate {
+      count
+    }
+  }
+}
+
+# Query 2: First Track of Every Album
+query {
+  Album(order_by: {AlbumId: asc}) {
+    Title
+    Tracks(limit: 1, order_by: {TrackId: asc}) {
+      Name
+    }
+  }
+}
+
+# Query 3: Albums for Artist ID 5
+query {
+  Album(where: {artist_id: {_eq: 5}}) {
+    Title
+  }
+}
