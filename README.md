@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Hasura GraphQL with Chinook Database
 Setup Steps
 
@@ -12,6 +11,5 @@ cd hasura-chinook-setup
 docker-compose up -d
 
 4. Access Hasura Console
-Open http://localhost:8080 in your browser.
-Enter admin secret: myadminsecretkey
->>>>>>> master
+Open http://localhost:8081 in your browser.
+Admin secret: myadminsecretkey
