@@ -11,7 +11,8 @@ mutation {
   }
 }
 
-# 5: How to identify the max number of artist_id and album_id.
+# 5: How to identify the max number of artist_id and album_id. Since album & artist albums are not auto_increment, we need to find the max value and use the next available value.
+- Find the Max artist_id & album_id
 query MyQuery {
   artist_aggregate {
     aggregate {
@@ -32,3 +33,45 @@ query MyQuery {
   }
 }
 
+ - Output:
+{
+  "data": {
+    "artist_aggregate": {
+      "aggregate": {
+        "max": {
+          "artist_id": 275,
+          "name": "Zeca Pagodinho"
+        }
+      }
+    },
+    "album_aggregate": {
+      "aggregate": {
+        "max": {
+          "album_id": 347,
+          "artist_id": 275,
+          "title": "Zooropa"
+        }
+      }
+    }
+  }
+}
+
+- Verified that the next value doesn't exist:
+query MyQuery {
+  artist(where: {artist_id: {_eq: 276}}) {
+    artist_id
+    name
+  }
+  album(where: {album_id: {_eq: 348}}) {
+    album_id
+    title
+    artist_id
+  }
+}
+ - Output:
+{
+  "data": {
+    "artist": [],
+    "album": []
+  }
+}
