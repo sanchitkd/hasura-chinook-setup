@@ -18,7 +18,7 @@ query {
   }
 }
 
-# Query 3: Albums for Artist ID 5 | Check X-Hasura-Artist-Id with the VALUE: 5
+# Query 3: Albums for Artist ID 5 | Check KEY: X-Hasura-Artist-Id with the VALUE: 5
 query {
   album {
     title
