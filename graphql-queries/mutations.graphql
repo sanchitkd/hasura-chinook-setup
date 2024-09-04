@@ -10,3 +10,14 @@ mutation {
     Title
   }
 }
+
+# 5 How to identify the max number of artist_id.
+query GetMaxArtistId {
+  artist_aggregate {
+    aggregate {
+      max {
+        artist_id
+      }
+    }
+  }
+}
