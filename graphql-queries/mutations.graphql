@@ -11,13 +11,24 @@ mutation {
   }
 }
 
-# 5 How to identify the max number of artist_id.
-query GetMaxArtistId {
+# 5: How to identify the max number of artist_id and album_id.
+query MyQuery {
   artist_aggregate {
     aggregate {
       max {
         artist_id
+        name
+      }
+    }
+  }
+  album_aggregate {
+    aggregate {
+      max {
+        album_id
+        artist_id
+        title
       }
     }
   }
 }
+
