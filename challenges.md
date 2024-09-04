@@ -3,9 +3,12 @@ ______________________________
 
 ## Challenge 1: 
 - Issue: Docker compose file not found.
+```
 C:\Users\Default\Desktop>docker-compose up -d
 no configuration file provided: not found
+```
 - Solution: Change the directory to the location where the docker-compose.yml is present.
+```
 C:\Users\Dell\OneDrive\Desktop\HASURA>cd C:\Users\Dell\OneDrive\Desktop\HASURA\
 
 C:\Users\Dell\OneDrive\Desktop\HASURA>dir
@@ -24,32 +27,37 @@ C:\Users\Dell\OneDrive\Desktop\HASURA>dir
                5 Dir(s)  122,580,738,048 bytes free
 
 C:\Users\Dell\OneDrive\Desktop\HASURA>
-
+```
 
 ## Challenge 2: 
 - Issue: Getting the warning, "the attribute `version` is obsolete".
+```
 C:\Users\Dell\OneDrive\Desktop\HASURA>docker-compose up -d
 time="2024-09-02T13:02:15+05:30" level=warning msg="C:\\Users\\Dell\\OneDrive\\Desktop\\HASURA\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
 [+] Running 3/3
  ✔ Network hasura_default         Created                                                                                                                              0.1s
  ✔ Volume "hasura_postgres-data"  Created                                                                                                                              0.0s
  ✔ Container hasura-postgres-1    Started  
-
+```
 - Solution: Update the docker-compose.yml file and remove the version attribute.
-# C:\Users\Dell\OneDrive\Desktop\HASURA\docker-compose.yml
+```
+C:\Users\Dell\OneDrive\Desktop\HASURA\docker-compose.yml
 version: '3.8'
 services:
-
+```
 
 ## Challenge 3: 
 - Issue: Got the error, "Bind for 0.0.0.0:8080 failed: port is already allocated"
+```
 C:\Users\Dell\OneDrive\Desktop\HASURA>docker-compose up -d
 [+] Running 1/2
  ✔ Container hasura-postgres-1  Running                                                                                                                                0.0s
  - Container hasura-hasura-1    Starting                                                                                                                               0.2s
 Error response from daemon: driver failed programming external connectivity on endpoint hasura-hasura-1 (ecaab181986daa46b5578914c5340660617d07f3a850c15e12d1b545e860d2e9): Bind for 0.0.0.0:8080 failed: port is already allocated
+```
 
 - Solution: The port 8080 is already in use. Find and kill the process using this port.
+```
 C:\Users\Dell\OneDrive\Desktop\HASURA>netstat -aon | findstr :8080
   TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING       15400
   TCP    [::]:8080              [::]:0                 LISTENING       15400
@@ -61,17 +69,19 @@ C:\Users\Dell\OneDrive\Desktop\HASURA>netstat -aon | findstr :8080
 
 C:\Users\Dell\OneDrive\Desktop\HASURA>netstat -aon | findstr :8080
   TCP    [::1]:8080             [::]:0                 LISTENING       16356
+```
 
 Open the Task Manager > Go to the Details tab > Find the process with the matching PID and terminate it.
 
-Port 8080 is used by the Docker Desktop application. Update the C:\Users\Dell\OneDrive\Desktop\HASURA\docker-compose.yml file
+Port 8080 is used by the Docker Desktop application. Update the C:\Users\Dell\OneDrive\Desktop\HASURA\docker-compose.yml file to use the 8081 port.
+```
     ports:
-      - "8080:8080"
-
+      - "8081:8080"
+```
 
 ## Challenge 4:
 - Issue: After running the docker-compose and loading the database we were unable to list any tables in the database.
-
+```
 root@e29260c98ad7:/# psql -U chinook_user -d chinook_db;
 psql (13.16 (Debian 13.16-1.pgdg120+1))
 Type "help" for help.
@@ -94,9 +104,9 @@ Did not find any relations.
 chinook_db=# \q
 root@e29260c98ad7:/# exit
 exit
-
+```
 We ran the docker logs graphql-postgres-1 command to check the docker logs. 
-
+```
 What's next:
     Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug graphql-postgres-1
     Learn more at https://docs.docker.com/go/debug-cli/
@@ -161,12 +171,11 @@ PostgreSQL init process complete; ready for start up.
 2024-09-04 04:44:11.554 UTC [71] STATEMENT:
                 SELECT ee_client_id::text, ee_client_secret
                   FROM hdb_catalog.hdb_version
-
-
 C:\Users\sd000072\Desktop\GraphQL>
-
+```
 - Solution:
 We checked the Chinook_PostgreSql.sql script and found the table name is chinook.
+```
 DROP DATABASE IF EXISTS chinook;
 
 
@@ -187,9 +196,9 @@ services:
       POSTGRES_USER: chinook_user
       POSTGRES_PASSWORD: chinook_pass
       POSTGRES_DB: chinook_db
-
-I corrected the docker-compose.yaml file with the correct DB name and re-run the workflow.
-
+```
+I corrected the docker-compose.yaml file with the correct DB name and re-run the workflow. Now we are able to list the Tables.
+```
 C:\Users\sd000072\Desktop\GraphQL>docker-compose up -d
 [+] Running 4/4
  ✔ Network graphql_default         Created                                                                                                                                                                                             0.1s
@@ -224,3 +233,4 @@ chinook=# \dt
 (11 rows)
 
 chinook=#
+```
