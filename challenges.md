@@ -186,8 +186,9 @@ CREATE DATABASE chinook;
 
 
 \c chinook;
-
+```
 However in the docker-compose.yaml file, the DB name was chinook_db
+```
 services:
   postgres:
     image: postgres:13
