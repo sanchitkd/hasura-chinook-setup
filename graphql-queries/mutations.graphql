@@ -33,7 +33,7 @@ query MyQuery {
   }
 }
 
- - Output:
+- Output:
 {
   "data": {
     "artist_aggregate": {
@@ -68,7 +68,8 @@ query MyQuery {
     artist_id
   }
 }
- - Output:
+
+- Output:
 {
   "data": {
     "artist": [],
