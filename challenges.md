@@ -235,3 +235,24 @@ chinook=# \dt
 
 chinook=#
 ```
+
+## Challenge 5: 
+- Issue: Unable to apply the metadata.
+```
+C:\Users\sd000072\Desktop\hasura-chinook-setup-task_1>hasura metadata apply
+INFO config v1 is deprecated from v1.4
+time="2024-09-05T00:55:49+05:30" level=fatal msg="please upgrade your project to a newer version.\nuse \x1b[36mhasura scripts update-project-v2\x1b[0m to upgrade your project to config v2"
+```
+
+- Solution:
+First download the Hasura CLI from this website [https://github.com/hasura/graphql-engine/releases] and rename the file to hasura.exe and move it to the project folder.
+The project was using the deprecated config v1, and we need to upgrade it to config v2. Ran this cmd `hasura scripts update-project-v2`
+```
+C:\Users\sd000072\Desktop\hasura-chinook-setup-task_1>hasura scripts update-project-v2
+INFO Updated config to version 2
+
+C:\Users\sd000072\Desktop\hasura-chinook-setup-task_1>hasura metadata apply
+INFO Metadata applied
+
+C:\Users\sd000072\Desktop\hasura-chinook-setup-task_1>
+```
