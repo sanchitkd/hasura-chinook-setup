@@ -17,17 +17,18 @@ Successfully installed
 
 C:\Users\#\Desktop>
 ```
-If unable to Run git.
+- If unable to Run git.
 ```
 C:\Windows\System32>git
 'git' is not recognized as an internal or external command,
 operable program or batch file.
 ```
-Please run the below command to add the Path to the environment variable. Restart the Command Prompt and make sure this path is showing in %PATH%
+- Please run the below command to add the Path to the environment variable. Restart the Command Prompt and make sure this path is showing in %PATH%
 ```
 C:\Windows\System32>setx PATH "%PATH%;C:\Program Files\Git\cmd"
 C:\Windows\System32>echo %PATH%
 ```
+- Please install Docker if not already installed and run `docker ps` to make sure there are containers running.
 
 ## Setup Steps
 1. Clone the Repository
