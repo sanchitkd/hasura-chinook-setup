@@ -89,6 +89,8 @@ C:\Users\#\Desktop\hasura-chinook-setup-task_1>
 7. Run `docker exec -it <Container ID> bash` to enter the Container. `C:\Users\#\Desktop\hasura-chinook-setup-task_1>docker exec -it hasura-chinook-setup-task_1-postgres-1 bash`
 8. Run `psql -U chinook_user -d chinook -f Chinook_PostgreSql.sql` to execute the the sql script. Then run `psql -U chinook_user -d chinook;` to login to the DB. Make sure the tables are listed by running `\dt`.
 ```
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>docker exec -it hasura-chinook-setup-task_1-postgres-1 bash
+root@59190d49fca6:/#
 root@59190d49fca6:/# psql -U chinook_user -d chinook -f Chinook_PostgreSql.sql
 root@59190d49fca6:/# psql -U chinook_user -d chinook;
 psql (13.16 (Debian 13.16-1.pgdg120+1))
