@@ -1,7 +1,7 @@
  
 # Query 1: Number of Artists
 query {
-  Artist {
+  artist_aggregate {
     aggregate {
       count
     }
@@ -10,17 +10,17 @@ query {
 
 # Query 2: First Track of Every Album
 query {
-  Album(order_by: {AlbumId: asc}) {
-    Title
-    Tracks(limit: 1, order_by: {TrackId: asc}) {
-      Name
+  album(order_by: {album_id: asc}) {
+    title
+    tracks(limit: 1, order_by: {track_id: asc}) {
+      name
     }
   }
 }
 
-# Query 3: Albums for Artist ID 5
-query {
-  Album(where: {artist_id: {_eq: 5}}) {
-    Title
+# Query 3: Albums for Artist ID 5 | Check X-Hasura-Artist-Id with the VALUE: 5
+query MyQuery {
+  album {
+    title
   }
 }
