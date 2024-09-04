@@ -1,6 +1,5 @@
 Hasura GraphQL with Chinook Database
 
-
 ## Pre-requisites:
 - Please insall git if not already installed.
 ```
