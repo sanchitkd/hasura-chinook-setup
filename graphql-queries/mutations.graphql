@@ -1,13 +1,29 @@
  
 # Mutation 4: Add Favorite Artist and Album
-mutation {
-  insert_Artist_one(object: {Name: "New Artist"}) {
-    ArtistId
-    Name
+mutation InsertNewArtistAndAlbum {
+  insert_artist_one(object: {artist_id: 276, name: "John Mayer"}) {
+    artist_id
+    name
   }
-  insert_Album_one(object: {Title: "New Album", artist_id: <ArtistId>}) {
-    AlbumId
-    Title
+  insert_album_one(object: {album_id: 348, artist_id: 276, title: "Continuum"}) {
+    album_id
+    title
+    artist_id
+  }
+}
+
+- Output:
+{
+  "data": {
+    "insert_artist_one": {
+      "artist_id": 276,
+      "name": "John Mayer"
+    },
+    "insert_album_one": {
+      "album_id": 348,
+      "title": "Continuum",
+      "artist_id": 276
+    }
   }
 }
 
