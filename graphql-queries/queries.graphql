@@ -19,7 +19,7 @@ query {
 }
 
 # Query 3: Albums for Artist ID 5 | Check X-Hasura-Artist-Id with the VALUE: 5
-query MyQuery {
+query {
   album {
     title
   }
