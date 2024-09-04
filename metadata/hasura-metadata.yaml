@@ -2,7 +2,7 @@ version: 3
 tables:
   - table:
       schema: public
-      name: Artist
+      name: artist
     object_relationships: []
     array_relationships: []
     select_permissions:
