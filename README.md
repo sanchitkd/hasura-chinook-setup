@@ -149,4 +149,6 @@ chinook=#
 - Save the Permissions:
   - Click "Save Permissions" or the equivalent button to save the row-level permissions for the artist role.
 
-11. 
+11. Apply the metadata.
+- `hasura metadata apply --admin-secret "myadminsecretkey"`
+- `hasura scripts update-project-v2`
