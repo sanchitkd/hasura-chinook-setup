@@ -123,32 +123,9 @@ chinook=#
   - Open http://localhost:8081 in your browser.
   - Admin secret: `myadminsecretkey`
 
-10. Navigate to the Data Tab:
-- Click on the “Data” tab in the top menu.
-- Select the albums Table:
-  - In the left sidebar, click on the albums table.
-- Go to the Permissions Tab:
-  - Click on the “Permissions” tab.
-- Add the artist Role:
-  - In the table with columns: Role, insert, select, update, delete, find the second row with the column labeled "Enter new role".
-  - Enter the name artist in the "Enter new role" column.
-- Configure Select Permissions:
-  - Click on the cross (×) under "select" for the artist role to change it to a tick (✓).
-	- This will open a modal or section where you can define row-level permissions.
-- Set Row-Level Permissions:
-  - In the row-level permissions section, select "With Custom check".
-  - Enter the following JSON to set the filter:
+10. Apply the metadata.
+- `hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"`
 ```
-{
-  "artist_id": {
-    "_eq": "x-hasura-artist-id"
-  }
-}
+C:\Users\sd000072\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"
+INFO Metadata applied
 ```
-- This filter ensures that artists can only access albums where the artist_id column matches the x-hasura-artist-id session variable.
-- Save the Permissions:
-  - Click "Save Permissions" or the equivalent button to save the row-level permissions for the artist role.
-
-11. Apply the metadata.
-- `hasura metadata apply --admin-secret "myadminsecretkey"`
-- `hasura scripts update-project-v2`
