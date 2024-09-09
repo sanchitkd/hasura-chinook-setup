@@ -237,7 +237,7 @@ chinook=#
 ## Challenge 5: 
 - Issue: Unable to apply the metadata.
 ```
-C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "sanchitkd"
 'hasura' is not recognized as an internal or external command,
 operable program or batch file.
 ```
@@ -246,7 +246,7 @@ operable program or batch file.
 ## Challenge 6: 
 - Issue: The project was using the deprecated config v1, and we need to upgrade it to config v2.
 ```
-C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "sanchitkd"
 INFO config v1 is deprecated from v1.4
 time="2024-09-05T00:55:49+05:30" level=fatal msg="please upgrade your project to a newer version.\nuse \x1b[36mhasura scripts update-project-v2\x1b[0m to upgrade your project to config v2"
 ```
@@ -255,7 +255,7 @@ time="2024-09-05T00:55:49+05:30" level=fatal msg="please upgrade your project to
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura scripts update-project-v2
 INFO Updated config to version 2
 
-C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "sanchitkd"
 INFO Metadata applied
 
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>
