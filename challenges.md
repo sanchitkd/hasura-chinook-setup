@@ -56,7 +56,7 @@ C:\Users\Dell\OneDrive\Desktop\HASURA>docker-compose up -d
 Error response from daemon: driver failed programming external connectivity on endpoint hasura-hasura-1 (ecaab181986daa46b5578914c5340660617d07f3a850c15e12d1b545e860d2e9): Bind for 0.0.0.0:8080 failed: port is already allocated
 ```
 - Solution:
- - The port 8080 is already in use. Find and kill the process using this port.
+  - The port 8080 is already in use. Find and kill the process using this port.
 ```
 C:\Users\Dell\OneDrive\Desktop\HASURA>netstat -aon | findstr :8080
   TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING       15400
@@ -70,8 +70,8 @@ C:\Users\Dell\OneDrive\Desktop\HASURA>netstat -aon | findstr :8080
 C:\Users\Dell\OneDrive\Desktop\HASURA>netstat -aon | findstr :8080
   TCP    [::1]:8080             [::]:0                 LISTENING       16356
 ```
- - Open the Task Manager > Go to the Details tab > Find the process with the matching PID and terminate it.
- - Port 8080 is used by the Docker Desktop application. Update the C:\Users\Dell\OneDrive\Desktop\HASURA\docker-compose.yml file to use the 8081 port.
+  - Open the Task Manager > Go to the Details tab > Find the process with the matching PID and terminate it.
+  - Port 8080 is used by the Docker Desktop application. Update the C:\Users\Dell\OneDrive\Desktop\HASURA\docker-compose.yml file to use the 8081 port.
 ```
     ports:
       - "8081:8080"
@@ -172,7 +172,7 @@ PostgreSQL init process complete; ready for start up.
 C:\Users\sd000072\Desktop\GraphQL>
 ```
 - Solution:
- - We checked the Chinook_PostgreSql.sql script and found the table name is chinook.
+  - We checked the Chinook_PostgreSql.sql script and found the table name is chinook.
 ```
 DROP DATABASE IF EXISTS chinook;
 
@@ -185,7 +185,7 @@ CREATE DATABASE chinook;
 
 \c chinook;
 ```
- - However in the docker-compose.yaml file, the DB name was chinook_db
+  - However in the docker-compose.yaml file, the DB name was chinook_db
 ```
 services:
   postgres:
@@ -196,7 +196,7 @@ services:
       POSTGRES_PASSWORD: chinook_pass
       POSTGRES_DB: chinook_db
 ```
- - Corrected the docker-compose.yaml file with the correct DB name and re-run the workflow. Now we are able to list the Tables.
+  - Corrected the docker-compose.yaml file with the correct DB name and re-run the workflow. Now we are able to list the Tables.
 ```
 C:\Users\sd000072\Desktop\GraphQL>docker-compose up -d
 [+] Running 4/4
@@ -241,22 +241,22 @@ C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint 
 'hasura' is not recognized as an internal or external command,
 operable program or batch file.
 ```
-- Solution: Download the Hasura CLI from this website [https://github.com/hasura/graphql-engine/releases] and rename the file to hasura.exe and move it to the project folder.
+- Solution: Download the Hasura CLI from this website [https://github.com/hasura/graphql-engine/releases] and rename the file to hasura.exe and move it to the project folder i.e. hasura-chinook-setup-task_1.
 
 ## Challenge 6: 
 - Issue: The project was using the deprecated config v1, and we need to upgrade it to config v2.
 ```
-C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"
 INFO config v1 is deprecated from v1.4
 time="2024-09-05T00:55:49+05:30" level=fatal msg="please upgrade your project to a newer version.\nuse \x1b[36mhasura scripts update-project-v2\x1b[0m to upgrade your project to config v2"
 ```
 - Solution: Run this cmd to update the metadata version. `hasura scripts update-project-v2`
 ```
-C:\Users\sd000072\Desktop\hasura-chinook-setup-task_1>hasura scripts update-project-v2
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura scripts update-project-v2
 INFO Updated config to version 2
 
-C:\Users\sd000072\Desktop\hasura-chinook-setup-task_1>hasura metadata apply
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"
 INFO Metadata applied
 
-C:\Users\sd000072\Desktop\hasura-chinook-setup-task_1>
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>
 ```
