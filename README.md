@@ -71,9 +71,9 @@ C:\Users\#\Desktop\hasura-chinook-setup-task_1>docker-compose up -d
 
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>
 ```
-4. Run `docker ps` command to list the Running container and look for <CONTAINER ID> of the postgres. Here the `<CONTAINER ID>` is `hasura-chinook-setup-task_1-postgres-1`
+4. Run `docker-compose ps` command to list the Running container and look for <CONTAINER ID> of the postgres. Here the `<CONTAINER ID>` is `hasura-chinook-setup-task_1-postgres-1`
 ```
-C:\Users\#\Desktop\hasura-chinook-setup-task_1>docker ps
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>docker-compose ps
 CONTAINER ID   IMAGE                           COMMAND                   CREATED              STATUS                        PORTS                                       NAMES
 fac00099b336   hasura/graphql-engine:v2.35.0   "/bin/sh -c '\"${HGE_…"   About a minute ago   Up About a minute (healthy)   0.0.0.0:8081->8080/tcp, :::8081->8080/tcp   hasura-chinook-setup-task_1-hasura-1
 59190d49fca6   postgres:13                     "docker-entrypoint.s…"    About a minute ago   Up About a minute             0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   hasura-chinook-setup-task_1-postgres-1
