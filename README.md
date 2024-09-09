@@ -130,9 +130,9 @@ exit
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>
 ```
 9. Apply the metadata.
-- `hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"`
+- `hasura metadata apply --endpoint http://localhost:8081 --admin-secret "sanchitkd"`
 ```
-C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "sanchitkd"
 INFO Metadata applied
 ```
 10. Access Hasura Console
