@@ -1,6 +1,6 @@
 version: 2
 endpoint: http://localhost:8081
-admin_secret: myadminsecretkey
+admin_secret: sanchitkd
 metadata_directory: metadata
 actions:
   kind: synchronous
