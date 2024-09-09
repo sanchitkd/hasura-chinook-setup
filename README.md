@@ -136,5 +136,9 @@ C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint 
 INFO Metadata applied
 ```
 10. Access Hasura Console
-  - Open http://localhost:8081 in your browser. (*If you have already accessed this URL, please open the link in an incognito window to avoid any duplicate data due to the browser caching.*)
-  - Enter admin-secret: `myadminsecretkey`
+- Open http://localhost:8081 in your browser. (*If you have already accessed this URL, please open the link in an incognito window to avoid any duplicate data due to the browser caching.*)
+- Enter admin-secret: `myadminsecretkey`
+11. Expose the unexposed Tables or views over the GraphQL API:
+- Click on the `Data` tab in the top menu.
+- Under `Databases` navigate to `default > public`.
+- If there are Untracked tables or views, Click on `Track All`.
