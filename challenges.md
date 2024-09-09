@@ -109,7 +109,7 @@ What's next:
     Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug graphql-postgres-1
     Learn more at https://docs.docker.com/go/debug-cli/
 
-C:\Users\sd000072\Desktop\GraphQL>docker logs graphql-postgres-1
+C:\Users\#\Desktop\GraphQL>docker logs graphql-postgres-1
 The files belonging to this database system will be owned by user "postgres".
 This user must also own the server process.
 
@@ -169,7 +169,7 @@ PostgreSQL init process complete; ready for start up.
 2024-09-04 04:44:11.554 UTC [71] STATEMENT:
                 SELECT ee_client_id::text, ee_client_secret
                   FROM hdb_catalog.hdb_version
-C:\Users\sd000072\Desktop\GraphQL>
+C:\Users\#\Desktop\GraphQL>
 ```
 - Solution:
   - We checked the Chinook_PostgreSql.sql script and found the table name is chinook.
@@ -198,17 +198,17 @@ services:
 ```
   - Corrected the docker-compose.yaml file with the correct DB name and re-run the workflow. Now we are able to list the Tables.
 ```
-C:\Users\sd000072\Desktop\GraphQL>docker-compose up -d
+C:\Users\#\Desktop\GraphQL>docker-compose up -d
 [+] Running 4/4
  ✔ Network graphql_default         Created                                                                                                                                                                                             0.1s
  ✔ Volume "graphql_postgres-data"  Created                                                                                                                                                                                             0.0s
  ✔ Container graphql-postgres-1    Started                                                                                                                                                                                             0.6s
  ✔ Container graphql-hasura-1      Started                                                                                                                                                                                             1.0s
 
-C:\Users\sd000072\Desktop\GraphQL>docker ps
-C:\Users\sd000072\Desktop\GraphQL>docker cp Chinook_PostgreSql.sql graphql-postgres-1:/Chinook_PostgreSql.sql
+C:\Users\#\Desktop\GraphQL>docker ps
+C:\Users\#\Desktop\GraphQL>docker cp Chinook_PostgreSql.sql graphql-postgres-1:/Chinook_PostgreSql.sql
 Successfully copied 602kB to graphql-postgres-1:/Chinook_PostgreSql.sql
-C:\Users\sd000072\Desktop\GraphQL>docker exec -it graphql-postgres-1 bash
+C:\Users\#\Desktop\GraphQL>docker exec -it graphql-postgres-1 bash
 root@4b8a900f2dc7:/# psql -U chinook_user -d chinook -f Chinook_PostgreSql.sql
 root@4b8a900f2dc7:/# psql -U chinook_user -d chinook;
 psql (13.16 (Debian 13.16-1.pgdg120+1))
