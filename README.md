@@ -142,3 +142,22 @@ INFO Metadata applied
 - Click on the `Data` tab in the top menu.
 - Under `Databases` navigate to `default > public`.
 - If there are Untracked tables or views, Click on `Track All`.
+
+
+## TASK CLEANUP:
+- `docker-compose down`
+- `docker volume rm hasura-chinook-setup-task_1_postgres-data`
+- `docker network prune -f`
+- `docker volume prune -f`
+- `docker system prune -f`
+- `docker rmi <IMAGE ID>`
+## CLEANUP CHECK:
+- `docker-compose ps -a`
+- `docker volume ls`
+- `docker image ls -a`
+- `docker network ls`
+- `docker system df`
+## TROUBLESHOOT:
+- `docker-compose config`
+- `docker inspect hasura-chinook-setup-task_1-postgres-1`
+- `docker logs hasura-chinook-setup-task_1-postgres-1`
