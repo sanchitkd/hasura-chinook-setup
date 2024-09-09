@@ -22,5 +22,6 @@ services:
       HASURA_GRAPHQL_DATABASE_URL: postgres://chinook_user:chinook_pass@postgres:5432/chinook
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: artist
 volumes:
   postgres-data:
