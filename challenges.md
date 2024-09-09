@@ -260,3 +260,10 @@ INFO Metadata applied
 
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>
 ```
+
+## Challenge 7:  
+- Issue: Can't access the Schema on un-checking the Request Header `x-hasura-admin-secret`
+We get the below error: ```Schema introspection query failed
+x-hasura-admin-secret/x-hasura-access-key required, but not found```
+- Solution: Add `HASURA_GRAPHQL_UNAUTHORIZED_ROLE: artist` to the docker-compose.yml file
+Reference: https://dev.to/debs_obrien/securing-your-hasura-graphql-endpoint-g9o
