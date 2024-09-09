@@ -28,14 +28,13 @@ C:\Windows\System32>setx PATH "%PATH%;C:\Program Files\Git\cmd"
 C:\Windows\System32>echo %PATH%
 ```
 - Please install Docker if not already installed and run `docker ps` to make sure there are containers running.
+https://docs.docker.com/engine/install/
 
 ## Setup Steps
 1. Clone the Repository
 `git clone https://github.com/sanchitkd/hasura-chinook-setup-task_1.git`
-
 2. Navigate to Directory
 `cd hasura-chinook-setup-task_1`
-
 3. Start Services
 `docker-compose up -d`
 ```
@@ -72,29 +71,37 @@ C:\Users\#\Desktop\hasura-chinook-setup-task_1>docker-compose up -d
 
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>
 ```
-4. Run `docker ps` command to list the Running container and look for `CONTAINER ID` of the postgres. Here it is `hasura-chinook-setup-task_1-postgres-1`
+4. Run `docker ps` command to list the Running container and look for <CONTAINER ID> of the postgres. Here the `<CONTAINER ID>` is `hasura-chinook-setup-task_1-postgres-1`
 ```
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>docker ps
 CONTAINER ID   IMAGE                           COMMAND                   CREATED              STATUS                        PORTS                                       NAMES
 fac00099b336   hasura/graphql-engine:v2.35.0   "/bin/sh -c '\"${HGE_…"   About a minute ago   Up About a minute (healthy)   0.0.0.0:8081->8080/tcp, :::8081->8080/tcp   hasura-chinook-setup-task_1-hasura-1
 59190d49fca6   postgres:13                     "docker-entrypoint.s…"    About a minute ago   Up About a minute             0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   hasura-chinook-setup-task_1-postgres-1
 ```
-5. Run `docker cp Chinook_PostgreSql.sql <CONTAINER ID>:/Chinook_PostgreSql.sql` to mount the DB on the postgres container
+5. Copy the DB script to the postgres container. `docker cp Chinook_PostgreSql.sql  hasura-chinook-setup-task_1-postgres-1:/Chinook_PostgreSql.sql`
 ```
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>docker cp Chinook_PostgreSql.sql  hasura-chinook-setup-task_1-postgres-1:/Chinook_PostgreSql.sql
 Successfully copied 602kB to hasura-chinook-setup-task_1-postgres-1:/Chinook_PostgreSql.sql
 
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>
 ```
-6. Run `docker exec -it <Container ID> bash` to enter the Container. 
+6. Enter the Container. `docker exec -it hasura-chinook-setup-task_1-postgres-1 bash`
 ```
 C:\Users\#\Desktop\hasura-chinook-setup-task_1>docker exec -it hasura-chinook-setup-task_1-postgres-1 bash
 root@59190d49fca6:/#
 ```
-7. Run `psql -U chinook_user -d chinook -f Chinook_PostgreSql.sql` to execute the the sql script. Then run `psql -U chinook_user -d chinook;` to login to the DB. Make sure the tables are listed by running `\dt`.
+7. Run this cmd to execute the the sql script. `psql -U chinook_user -d chinook -f Chinook_PostgreSql.sql`
 ```
-root@59190d49fca6:/#
 root@59190d49fca6:/# psql -U chinook_user -d chinook -f Chinook_PostgreSql.sql
+psql:Chinook_PostgreSql.sql:19: ERROR:  cannot drop the currently open database
+psql:Chinook_PostgreSql.sql:25: ERROR:  database "chinook" already exists
+You are now connected to database "chinook" as user "chinook_user".
+CREATE TABLE
+...
+root@59190d49fca6:/#
+```
+8. Then run `psql -U chinook_user -d chinook;` to login to the DB. Make sure the tables are listed by running `\dt`. Once verified, use `\q` to exit the DB and type `exit` to exit the Container.
+```
 root@59190d49fca6:/# psql -U chinook_user -d chinook;
 psql (13.16 (Debian 13.16-1.pgdg120+1))
 Type "help" for help.
@@ -116,16 +123,18 @@ chinook=# \dt
  public | track          | table | chinook_user
 (11 rows)
 
-chinook=#
-```  
+chinook=# \q
+root@59190d49fca6:/# exit
+exit
 
-8. Access Hasura Console
-  - Open http://localhost:8081 in your browser. (*If you have already accessed this URL, please open the link in an incognito window to avoid any duplicate data due to the browser caching.*)
-  - Admin secret: `myadminsecretkey`
-
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>
+```
 9. Apply the metadata.
 - `hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"`
 ```
-C:\Users\sd000072\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"
+C:\Users\#\Desktop\hasura-chinook-setup-task_1>hasura metadata apply --endpoint http://localhost:8081 --admin-secret "myadminsecretkey"
 INFO Metadata applied
 ```
+10. Access Hasura Console
+  - Open http://localhost:8081 in your browser. (*If you have already accessed this URL, please open the link in an incognito window to avoid any duplicate data due to the browser caching.*)
+  - Enter admin-secret: `myadminsecretkey`
